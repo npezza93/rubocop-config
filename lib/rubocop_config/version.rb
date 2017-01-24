@@ -1,4 +1,4 @@
 # frozen_string_literal: true
 module RubocopConfig
-  VERSION = "0.47.1"
+  VERSION = "0.47.1.1"
 end
