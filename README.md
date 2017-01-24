@@ -2,8 +2,7 @@
 
 ## Installation
 
-After checking out the repo, run `bin/setup` to install dependencies, then run
-`bundle exec rake install`
+`gem install rubocop_config`
 
 ## Usage
 
