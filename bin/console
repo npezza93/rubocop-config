@@ -2,7 +2,7 @@
 # frozen_string_literal: true
 
 require "bundler/setup"
-require "rubocop_config"
+require "rubocop_config/runner"
 require "pry"
 
 Pry.start

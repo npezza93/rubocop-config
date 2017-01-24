@@ -14,7 +14,10 @@ module RubocopConfig
     end
 
     def config
-      @config ||= File.read(".rubocop.yml")
+      # binding.pry
+      @config ||= File.read(
+        File.expand_path("../../../config", __FILE__) + "/default.yml"
+      )
     end
   end
 end
