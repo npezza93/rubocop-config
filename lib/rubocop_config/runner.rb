@@ -18,7 +18,7 @@ module RubocopConfig
     end
 
     def config
-      @config ||= YAML.load(ERB.new(File.read(config_file)).result)
+      @config ||= YAML.safe_load(ERB.new(File.read(config_file)).result)
     end
 
     def config_file
