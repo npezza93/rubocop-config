@@ -5,4 +5,4 @@ $LOAD_PATH.unshift(File.dirname(File.realpath(__FILE__)) + "/../lib")
 require "bundler/setup"
 require "rubocop_config/runner"
 
-RubocopConfig::Runner.new(Dir.pwd).perform
+RubocopConfig::Runner.new(Dir.pwd, ARGV[0]).perform

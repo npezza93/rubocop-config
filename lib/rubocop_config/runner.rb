@@ -4,23 +4,26 @@ require "yaml"
 
 module RubocopConfig
   class Runner
-    attr_accessor :pwd
+    attr_accessor :pwd, :config_override_file
 
-    def initialize(pwd)
+    def initialize(pwd, config_override_file = nil)
       @pwd = pwd
+      @config_override_file = config_override_file
     end
 
     def perform
       file_name = "#{pwd}/.rubocop.yml"
-
+      puts "Building .rubocop.yml file..."
       File.open(file_name, "w") { |f| f << config.to_yaml }
     end
 
     def config
-      # binding.pry
-      @config ||= YAML.safe_load(ERB.new(File.read(
-        File.expand_path("../../../config", __FILE__) + "/default.yml"
-      )).result)
+      @config ||= YAML.load(ERB.new(File.read(config_file)).result)
+    end
+
+    def config_file
+      config_override_file ||
+        (File.expand_path("../../../config", __FILE__) + "/default.yml")
     end
   end
 end
