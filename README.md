@@ -8,6 +8,11 @@
 
 `rubocop-config`
 
+If you want to supply your own .rubocop.yml file add it as an optional
+command line argument:
+
+`rubocop-config path/to/file.yml`
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
