@@ -1172,4 +1172,4 @@ AllCops:
     - 'db/**/*'
     - 'Gemfile.lock'
     - 'Rakefile'
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: <%= RUBY_VERSION.split(".")[0..1].join('.') %>
