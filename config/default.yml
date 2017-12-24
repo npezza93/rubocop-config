@@ -125,8 +125,8 @@ Layout/ExtraSpacing:
   Enabled: true
 
 Layout/FirstArrayElementLineBreak:
-Description: Checks for a line break before the first element in a multi-line array.
-Enabled: false
+  Description: Checks for a line break before the first element in a multi-line array.
+  Enabled: false
 
 Layout/FirstHashElementLineBreak:
   Description: Checks for a line break before the first element in a multi-line hash.
@@ -300,11 +300,6 @@ Layout/SpaceInsideArrayPercentLiteral:
 Layout/SpaceInsidePercentLiteralDelimiters:
   Description: No unnecessary spaces inside delimiters of %i/%w/%x literals.
   Enabled: true
-
-Layout/SpaceInsideBrackets:
-  Description: No spaces after [ or before ].
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-spaces-braces
-  Enabled: false
 
 Layout/SpaceInsideHashLiteralBraces:
   Description: Use spaces inside hash literal braces - or don't.
@@ -541,11 +536,6 @@ Lint/RescueType:
   Description: Avoid rescuing from non constants that could result in a `TypeError`.
   Enabled: true
 
-Lint/RescueWithoutErrorClass:
-  Description: Avoid rescuing without specifying an error class.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-blind-rescues'
-  Enabled: true
-
 Lint/SafeNavigationChain:
   Description: Do not chain ordinary method call after safe navigation operator.
   Enabled: true
@@ -580,7 +570,7 @@ Lint/UnifiedInteger:
   Enabled: true
 
 Lint/UnneededDisable:
-  Description: Checks for rubocop:disable comments that can be removed. Note: this cop is not disabled when disabling all cops. It must be explicitly disabled.
+  Description: 'Checks for rubocop:disable comments that can be removed. Note: this cop is not disabled when disabling all cops. It must be explicitly disabled.'
   Enabled: true
 
 Lint/UnneededRequireStatement:
@@ -606,7 +596,7 @@ Lint/UnreachableCode:
   Enabled: true
 
 Lint/UriEscapeUnescape:
-  Description: `URI.escape` method is obsolete and should not be used. Instead, use `CGI.escape`, `URI.encode_www_form` or `URI.encode_www_form_component` depending on your specific use case. Also `URI.unescape` method is obsolete and should not be used. Instead, use `CGI.unescape`, `URI.decode_www_form` or `URI.decode_www_form_component` depending on your specific use case.
+  Description: '`URI.escape` method is obsolete and should not be used. Instead, use `CGI.escape`, `URI.encode_www_form` or `URI.encode_www_form_component` depending on your specific use case. Also `URI.unescape` method is obsolete and should not be used. Instead, use `CGI.unescape`, `URI.decode_www_form` or `URI.decode_www_form_component` depending on your specific use case.'
   Enabled: true
 
 Lint/UriRegexp:
@@ -898,7 +888,7 @@ Rails/ApplicationRecord:
   Enabled: true
 
 Rails/ActiveSupportAliases:
-  Description: Avoid ActiveSupport aliases of standard ruby methods: `String#starts_with?`, `String#ends_with?`, `Array#append`, `Array#prepend`.
+  Description: 'Avoid ActiveSupport aliases of standard ruby methods: `String#starts_with?`, `String#ends_with?`, `Array#append`, `Array#prepend`.'
   Enabled: true
 
 Rails/Blank:
@@ -998,7 +988,7 @@ Rails/RequestReferer:
   Enabled: true
 
 Rails/ReversibleMigration:
-  Description:'Checks whether the change method of the migration file is reversible.
+  Description: Checks whether the change method of the migration file is reversible.
   StyleGuide: https://github.com/bbatsov/rails-style-guide#reversible-migration
   Reference: http://api.rubyonrails.org/classes/ActiveRecord/Migration/CommandRecorder.html
   Enabled: true
@@ -1149,7 +1139,7 @@ Style/CollectionMethods:
   Enabled: false
 
 Style/ColonMethodCall:
-  Description: Do not use :: for method call.
+  Description: 'Do not use :: for method call.'
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#double-colons
   Enabled: true
 
@@ -1284,7 +1274,7 @@ Style/GuardClause:
   Enabled: true
 
 Style/HashSyntax:
-  Description: Prefer Ruby 1.9 hash syntax { a: 1, b: 2 } over 1.8 syntax { :a => 1, :b => 2 }.
+  Description: 'Prefer Ruby 1.9 hash syntax { a: 1, b: 2 } over 1.8 syntax { :a => 1, :b => 2 }.'
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#hash-literals
   Enabled: true
 
@@ -1409,7 +1399,7 @@ Style/MultilineMemoization:
   Enabled: true
 
 Style/MultilineTernaryOperator:
-  Description: Avoid multi-line ?: (the ternary operator); use if/unless instead.
+  Description: 'Avoid multi-line ?: (the ternary operator); use if/unless instead.'
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-multiline-ternary
   Enabled: true
 
@@ -1581,6 +1571,11 @@ Style/RescueModifier:
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-rescue-modifiers
   Enabled: false
 
+Style/RescueStandardError:
+  Description: Avoid rescuing without specifying an error class.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-blind-rescues'
+  Enabled: true
+
 Style/ReturnNil:
   Description: Use return instead of return nil.
   Enabled: false
@@ -1636,6 +1631,7 @@ Style/StderrPuts:
 Style/StringLiterals:
   Description: Checks if uses of quotes match the configured preference.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#consistent-string-literals
+  EnforcedStyle: double_quotes
   Enabled: true
 
 Style/StringLiteralsInInterpolation:
