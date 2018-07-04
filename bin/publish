@@ -53,7 +53,7 @@ FileUtils.chdir APP_ROOT do
   system! "git add lib/rubocop_config/version.rb"
 
   puts "== Committing updated files =="
-  system! "git commit -m 'Version bump to #{current_version.join('.')}'"
+  system! "git commit -m 'Version bump to #{new_version}'"
 
   puts "== Tagging release =="
   system! "bundle exec rake release"
