@@ -1,0 +1,60 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "pathname"
+require "fileutils"
+require "json"
+require "rubocop"
+require_relative "../lib/rubocop_config/version"
+
+# path to your application root.
+APP_ROOT = Pathname.new File.expand_path("..", __dir__)
+MASTER_CHECK = <<~MASTER_CHECK
+  if [ $(git symbolic-ref --short -q HEAD) != 'master' ];
+    then exit 1;
+  fi
+MASTER_CHECK
+
+def system!(*args)
+  system(*args) || abort("\n== Command #{args} failed ==")
+end
+
+abort("\n== Not on master") unless system(MASTER_CHECK)
+
+current_config_version = Gem::Version.new(
+  RubocopConfig::VERSION.split(".").map(&:to_i).first(3).join(".")
+)
+current_rubocop_version = Gem::Version.new(RuboCop::Version::STRING)
+
+abort("\n== Versions can't go backwards ==") if
+  current_rubocop_version < current_config_version
+
+new_version =
+  if current_config_version == current_rubocop_version
+    current_version = RubocopConfig::VERSION.split(".").map(&:to_i)
+    [*current_version.first(3), current_version.last + 1]
+  elsif current_rubocop_version > current_config_version
+    RuboCop::Version::STRING + ".0"
+  end
+
+FileUtils.chdir APP_ROOT do
+  contents = <<~FILE
+    # frozen_string_literal: true
+
+    module RubocopConfig
+      VERSION = "#{new_version}"
+    end
+  FILE
+
+  puts "== Updating version to #{new_version} =="
+  File.write("lib/rubocop_config/version.rb", contents)
+
+  puts "== Adding Changed Files =="
+  system! "git add lib/rubocop_config/version.rb"
+
+  puts "== Committing updated files =="
+  system! "git commit -m 'Version bump to #{current_version.join('.')}'"
+
+  puts "== Tagging release =="
+  system! "bundle exec rake release"
+end
