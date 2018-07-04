@@ -24,7 +24,7 @@ module RubocopConfig
 
     def config_file
       config_override_file ||
-        (File.expand_path("../../../config", __FILE__) + "/default.yml")
+        (File.expand_path("../../config", __dir__) + "/default.yml")
     end
   end
 end

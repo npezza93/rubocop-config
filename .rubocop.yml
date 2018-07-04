@@ -35,6 +35,9 @@ Layout/AlignParameters:
   Description: Align the parameters of a method call if they span more than one line.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-double-indent
   Enabled: true
+Layout/BlockAlignment:
+  Description: Align block ends correctly.
+  Enabled: true
 Layout/BlockEndNewline:
   Description: Put end statement of multiline block on its own line.
   Enabled: true
@@ -48,6 +51,14 @@ Layout/ClosingParenthesisIndentation:
 Layout/CommentIndentation:
   Description: Indentation of comments.
   Enabled: false
+Layout/ConditionPosition:
+  Description: Checks for condition placed in a confusing position relative to the
+    keyword.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#same-line-condition
+  Enabled: true
+Layout/DefEndAlignment:
+  Description: Align ends corresponding to defs correctly.
+  Enabled: true
 Layout/DotPosition:
   Description: Checks the position of the dot in multi-line method calls.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#consistent-multi-line-chains
@@ -91,6 +102,9 @@ Layout/EmptyLinesAroundMethodBody:
   Description: Keeps track of empty lines around method bodies.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#empty-lines-around-bodies
   Enabled: false
+Layout/EndAlignment:
+  Description: Align ends correctly.
+  Enabled: true
 Layout/EndOfLine:
   Description: Use Unix-style line endings.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#crlf
@@ -294,9 +308,6 @@ Lint/AssignmentInCondition:
   Description: Don't use assignment in conditions.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#safe-assignment-in-condition
   Enabled: true
-Lint/BlockAlignment:
-  Description: Align block ends correctly.
-  Enabled: true
 Lint/BooleanSymbol:
   Description: Check for `:true` and `:false` symbols.
   Enabled: true
@@ -304,16 +315,8 @@ Lint/CircularArgumentReference:
   Description: Default values in optional keyword arguments and optional ordinal arguments
     should not refer back to the name of the argument.
   Enabled: true
-Lint/ConditionPosition:
-  Description: Checks for condition placed in a confusing position relative to the
-    keyword.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#same-line-condition
-  Enabled: true
 Lint/Debugger:
   Description: Check for debugger calls.
-  Enabled: true
-Lint/DefEndAlignment:
-  Description: Align ends corresponding to defs correctly.
   Enabled: true
 Lint/DeprecatedClassMethods:
   Description: Check for deprecated class method calls.
@@ -345,9 +348,6 @@ Lint/EmptyInterpolation:
   Enabled: true
 Lint/EmptyWhen:
   Description: Checks for `when` branches with empty bodies.
-  Enabled: true
-Lint/EndAlignment:
-  Description: Align ends correctly.
   Enabled: true
 Lint/EndInMethod:
   Description: END blocks should not be placed inside method definitions.
@@ -464,10 +464,6 @@ Lint/UnderscorePrefixedVariableName:
   Enabled: true
 Lint/UnifiedInteger:
   Description: Use Integer instead of Fixnum or Bignum
-  Enabled: true
-Lint/UnneededDisable:
-  Description: 'Checks for rubocop:disable comments that can be removed. Note: this
-    cop is not disabled when disabling all cops. It must be explicitly disabled.'
   Enabled: true
 Lint/UnneededRequireStatement:
   Description: Checks for unnecessary `require` statement.
@@ -655,12 +651,6 @@ Performance/FlatMap:
   Reference: https://github.com/JuanitoFatas/fast-ruby#enumerablemaparrayflatten-vs-enumerableflat_map-code
   Enabled: true
   EnabledForFlattenWithoutParams: false
-Performance/HashEachMethods:
-  Description: Use `Hash#each_key` and `Hash#each_value` instead of `Hash#keys.each`
-    and `Hash#values.each`.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#hash-each
-  Enabled: true
-  AutoCorrect: false
 Performance/LstripRstrip:
   Description: Use `strip` instead of `lstrip.rstrip`.
   Enabled: true
@@ -1120,9 +1110,9 @@ Style/MethodDefParentheses:
   Description: Checks if the method definitions have or don't have parentheses.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#method-parens
   Enabled: true
-Style/MethodMissing:
-  Description: Avoid using `method_missing`.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-method-missing
+Style/MethodMissingSuper:
+  Enabled: true
+Style/MissingRespondToMissing:
   Enabled: true
 Style/MinMax:
   Description: Use `Enumerable#minmax` instead of `Enumerable#min` and `Enumerable#max`
@@ -1387,7 +1377,11 @@ Style/TrailingCommaInArguments:
   Description: Checks for trailing comma in argument lists.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-trailing-params-comma'
   Enabled: false
-Style/TrailingCommaInLiteral:
+Style/TrailingCommaInArrayLiteral:
+  Description: Checks for trailing comma in array and hash literals.'
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-trailing-array-commas
+  Enabled: false
+Style/TrailingCommaInHashLiteral:
   Description: Checks for trailing comma in array and hash literals.'
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-trailing-array-commas
   Enabled: false
